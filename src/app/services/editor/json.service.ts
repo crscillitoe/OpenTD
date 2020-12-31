@@ -19,6 +19,12 @@ export class JsonService {
     const layout = localStorage.getItem(this.layoutKey);
     if (layout) return JSON.parse(layout) as Editor;
 
-    return {} as Editor;
+    const e: Editor = {
+      enemies: [],
+      towers: [],
+      levels: [],
+      damageTypes: [],
+    };
+    return e;
   }
 }

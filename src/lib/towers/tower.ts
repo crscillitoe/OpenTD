@@ -1,11 +1,12 @@
-import { TileMatcher } from "../level/tiles/tileMatcher";
-import { TowerUpgrade } from "./towerUpgrade";
+import { TileMatcher } from '../level/tiles/tileMatcher';
+import { DamageTypeID } from './damageTypes/damageType';
+import { TowerUpgrade, TowerUpgradeID } from './towerUpgrade';
 
 export interface Tower {
   /**
    * Internal name used for references
    */
-  id: string;
+  id: TowerID;
 
   /**
    * Name displayed to the player
@@ -30,7 +31,7 @@ export interface Tower {
   /**
    * List of applied tower upgrade names.
    */
-  appliedUpgrades: Array<string>;
+  appliedUpgrades: Array<TowerUpgradeID>;
 
   /**
    * Ticks per attack.
@@ -68,5 +69,7 @@ export interface Tower {
    *
    * Default empty, damage is basic single-target.
    */
-  damageType: string;
+  damageType: DamageTypeID;
 }
+
+export type TowerID = string;

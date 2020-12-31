@@ -1,4 +1,7 @@
+import { DamageTypeID } from './damageTypes/damageType';
+
 export interface TowerUpgrade {
+  id: TowerUpgradeID;
   name: string;
   cost: number;
   attackDistanceDelta: number;
@@ -6,5 +9,13 @@ export interface TowerUpgrade {
   damageDelta: number;
   armorPenetrationDelta: number;
   canShootOverWalls: boolean;
-  newDamageType: string;
+  newDamageType: DamageTypeID;
+
+  /**
+   * Upgrade cannot be applied unless the required
+   * upgrades are already present.
+   */
+  requires: Array<TowerUpgradeID>;
 }
+
+export type TowerUpgradeID = string;

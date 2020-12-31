@@ -1,0 +1,84 @@
+<div class="centered">
+  <div class="editor-view">
+    <mat-accordion class="spaced">
+      <ng-container *ngFor="let dt of json.layout.damageTypes; let i = index">
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="table-text">
+                {{ dt.id }}
+              </div>
+            </mat-panel-title>
+            <mat-panel-description>
+              <div class="horizontal-flex" *ngIf="dt.splash">
+                <mat-icon>add</mat-icon>
+                <div class="table-text">
+                  Splash {{ dt.splashDamagePercentage }}% {{ dt.splashRadius }}R
+                </div>
+              </div>
+
+              <div class="horizontal-flex" *ngIf="dt.slow">
+                <mat-icon>add</mat-icon>
+                <div class="table-text">
+                  Slow {{ dt.slowPercentage }}% {{ dt.slowDuration }} Ticks
+                </div>
+              </div>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-form-field>
+            <mat-label>Damage Type Identifier</mat-label>
+            <input matInput [(ngModel)]="dt.id" />
+          </mat-form-field>
+
+          <br />
+          <mat-slide-toggle [(ngModel)]="dt.splash">Splash</mat-slide-toggle>
+          <ng-container *ngIf="dt.splash">
+            <mat-form-field class="spaced">
+              <mat-label>Splash Damage %</mat-label>
+              <input matInput [(ngModel)]="dt.splashDamagePercentage" />
+            </mat-form-field>
+            <mat-form-field class="spaced">
+              <mat-label>Splash Radius</mat-label>
+              <input matInput [(ngModel)]="dt.splashRadius" />
+            </mat-form-field>
+          </ng-container>
+
+          <br />
+          <mat-slide-toggle [(ngModel)]="dt.slow">Slow</mat-slide-toggle>
+          <ng-container *ngIf="dt.slow">
+            <mat-form-field class="spaced">
+              <mat-label>Slow %</mat-label>
+              <input matInput [(ngModel)]="dt.slowPercentage" />
+            </mat-form-field>
+            <mat-form-field class="spaced">
+              <mat-label>Slow Duration</mat-label>
+              <input matInput [(ngModel)]="dt.slowDuration" />
+            </mat-form-field>
+          </ng-container>
+          <mat-action-row>
+            <button
+              mat-mini-fab
+              matTooltip="Delete Damage Type"
+              color="warn"
+              (click)="delete(i)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </ng-container>
+    </mat-accordion>
+
+    <div class="centered">
+      <button
+        mat-fab
+        color="primary"
+        matTooltip="Add Damage Type"
+        (click)="addDamageType()"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

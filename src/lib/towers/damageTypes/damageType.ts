@@ -1,5 +1,5 @@
 export interface DamageType {
-  id: string;
+  id: DamageTypeID;
 
   /**
    * Indicates this type of damage can harm
@@ -36,3 +36,5 @@ export interface DamageType {
    */
   slowDuration: number;
 }
+
+export type DamageTypeID = string;

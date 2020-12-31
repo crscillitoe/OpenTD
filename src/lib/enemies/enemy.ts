@@ -1,8 +1,10 @@
+import { DamageTypeID } from '../towers/damageTypes/damageType';
+
 export interface Enemy {
   /**
    * Internal name used for references
    */
-  id: string;
+  id: EnemyID;
 
   /**
    * Name displayed to the player
@@ -38,5 +40,7 @@ export interface Enemy {
    *
    * If empty, all damage types can hurt this enemy.
    */
-  weakTo: Array<string>;
+  weakTo: Array<DamageTypeID>;
 }
+
+export type EnemyID = string;

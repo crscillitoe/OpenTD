@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TowerComponent } from './editor/tower/tower.component';
@@ -22,6 +22,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { DamageTypeComponent } from './editor/damage-type/damage-type.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { DialogComponent } from './editor/dialog/dialog.component';
+import { DebuffComponent } from './editor/debuff/debuff.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +34,16 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     EnemyComponent,
     LevelComponent,
     EditorComponent,
+    DamageTypeComponent,
+    DialogComponent,
+    DebuffComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatFormFieldModule,
     MatToolbarModule,
     MatDialogModule,
     MatButtonModule,
