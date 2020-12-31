@@ -1,10 +1,15 @@
 export interface Enemy {
-    getHealth(): number;
-    getArmor(): number;
-    getDamage(): number;
+    health: number;
+    armor: number;
+    damage: number;
 
     /**
      * Base number of ticks between advancing tiles
      */
-    getSpeed(): number;
+    speed: number;
+
+    /**
+     * Initialize fresh instance of enemy
+     */
+    init(): void;
 }

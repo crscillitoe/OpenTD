@@ -4,8 +4,13 @@ import { NeutralTileMatcher } from "../../level/tiles/neutral/neutral";
 import { TileMatcher } from "../../level/tiles/tileMatcher";
 import { SingularDamage } from "../damageTypes/singular";
 import { BasicTowerv2 } from "./basicTower2";
+import { Renderable } from "../../renderable";
+import { Asset } from "../../asset";
 
-export class BasicTower implements Tower {
+export class BasicTower implements Tower, Renderable {
+  getAsset(): Asset {
+    throw new Error("Method not implemented.");
+  }
   getCost(): number {
     return 100;
   }

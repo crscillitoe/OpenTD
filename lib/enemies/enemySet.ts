@@ -1,6 +1,6 @@
 import { Enemy } from "./enemy";
 
-export interface WaveSpawn {
+export interface EnemySet {
     spawnCount: number;
     waitTicks: number;
 

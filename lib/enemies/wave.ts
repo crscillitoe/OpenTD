@@ -1,10 +1,10 @@
 import { Enemy } from "./enemy";
-import { WaveSpawn } from "./waveSpawn";
+import { EnemySet } from "./enemySet";
 
 export interface Wave {
     /**
      * Cash given to player on successful completion
      */
     reward: number;
-    waveSpawns: Array<WaveSpawn>;
+    enemySets: Array<EnemySet>;
 }
