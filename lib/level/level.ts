@@ -2,39 +2,25 @@ import { Wave } from "../enemies/wave";
 import { Tower } from "../towers/tower";
 import { Tile } from "./tiles/tile";
 
-export abstract class Level {
-  getWidth(): number {
-    return 0;
-  }
+export interface Level {
+  width: number;
+  height: number;
 
-  getHeight(): number {
-    return 0;
-  }
+  tiles: Array<Array<Tile>>;
 
-  getTiles(): Array<Array<Tile>> {
-    return [];
-  }
-
-  getWaves(): Array<Wave> {
-    return [];
-  }
+  waves: Array<Wave>;
 
   /**
    * If true, waves after the final wave
    * will be auto-generated with scaling
    * difficulty until the player loses.
    */
-  supportsFreeplay(): boolean {
-    return false;
-  }
+  supportsFreeplay: boolean;
 
   /**
-   * Returns a list of towers that can be
-   * built on this level.
+   * List of all legal tower IDs
    */
-  legalTowers(): Array<Tower> {
-    return [];
-  }
+  legalTowers: Array<string>;
 
   /**
    * Override method, if true, all towers
@@ -42,7 +28,5 @@ export abstract class Level {
    *
    * default false.
    */
-  allTowersLegal(): boolean {
-    return false;
-  }
+  allTowersLegal: boolean;
 }
