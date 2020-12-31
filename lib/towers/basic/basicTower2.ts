@@ -3,11 +3,10 @@ import { Tower } from "../tower";
 import { NeutralTileMatcher } from "../../level/tiles/neutral/neutral";
 import { TileMatcher } from "../../level/tiles/tileMatcher";
 import { SingularDamage } from "../damageTypes/singular";
-import { BasicTowerv2 } from "./basicTower2";
 
-export class BasicTower implements Tower {
+export class BasicTowerv2 implements Tower {
   getCost(): number {
-    return 100;
+    return 200;
   }
   getWidth(): number {
     return 1;
@@ -19,21 +18,21 @@ export class BasicTower implements Tower {
     return [new NeutralTileMatcher()];
   }
   canUpgrade(): boolean {
-    return true;
+    return false;
   }
   upgrade(): Tower {
-    return new BasicTowerv2();
+    return null;
   }
   getAttackSpeed(): number {
-    return 30;
+    return 15;
   }
   getAttackDistance(): number {
-    return 5;
+    return 6;
   }
   canShootOverWalls(): boolean {
     return false;
   }
   getDamageType(): DamageType {
-    return new SingularDamage(10);
+    return new SingularDamage(15);
   }
 }

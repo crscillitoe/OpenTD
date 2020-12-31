@@ -9,6 +9,7 @@ import { DamageType } from "./damageType";
  * attacked.
  */
 export class SingularDamage implements DamageType {
+  constructor(damage: number) {}
   applyDamage(enemy: Enemy, level: Level): void {
     throw new Error("Method not implemented.");
   }
