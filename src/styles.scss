@@ -5,5 +5,50 @@ body {
   padding: 0px;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.editor-view {
+  width: 600px;
+  padding: 15px;
+}
+
+.spaced {
+  padding: 15px;
+}
+
+.centered {
+  width: 100%;
+}
+
+.centered,
+.horizontal-flex {
+  display: flex;
+  justify-content: center;
+}
+
+.horizontal-flex {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.table-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right-align {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.rounded {
+  border-radius: 5px;
+}

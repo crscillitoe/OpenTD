@@ -1,4 +1,5 @@
 import { TileMatcher } from '../level/tiles/tileMatcher';
+import { BuffID } from './buff';
 import { DamageTypeID } from './damageTypes/damageType';
 import { TowerUpgrade, TowerUpgradeID } from './towerUpgrade';
 
@@ -70,6 +71,12 @@ export interface Tower {
    * Default empty, damage is basic single-target.
    */
   damageType: DamageTypeID;
+
+  /**
+   * Applies the given buffs to towers within the
+   * `attackDistance` of this tower.
+   */
+  buffs: Array<BuffID>;
 }
 
 export type TowerID = string;

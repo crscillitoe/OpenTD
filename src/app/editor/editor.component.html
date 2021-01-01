@@ -19,3 +19,9 @@
     <app-debuff></app-debuff>
   </mat-tab>
 </mat-tab-group>
+
+<br />
+<p>{{ json.layout | json }}</p>
+
+<input [(ngModel)]="importString" />
+<button (click)="import()">Import JSON</button>

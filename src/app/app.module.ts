@@ -26,6 +26,8 @@ import { DamageTypeComponent } from './editor/damage-type/damage-type.component'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DialogComponent } from './editor/dialog/dialog.component';
 import { DebuffComponent } from './editor/debuff/debuff.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { DebuffComponent } from './editor/debuff/debuff.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatChipsModule,
+    MatMenuModule,
     MatFormFieldModule,
     MatToolbarModule,
     MatDialogModule,

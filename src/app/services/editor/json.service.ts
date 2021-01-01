@@ -24,6 +24,7 @@ export class JsonService {
       towers: [],
       levels: [],
       damageTypes: [],
+      debuffs: [],
     };
     return e;
   }

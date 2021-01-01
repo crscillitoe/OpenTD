@@ -6,7 +6,7 @@
           <mat-expansion-panel-header>
             <mat-panel-title>
               <div class="table-text">
-                {{ dt.id }}
+                {{ dt.name }}
               </div>
             </mat-panel-title>
             <mat-panel-description>
@@ -23,12 +23,25 @@
                   Slow {{ dt.slowPercentage }}% {{ dt.slowDuration }} Ticks
                 </div>
               </div>
+
+              <div class="right-align">
+                <ng-container *ngFor="let debuff of json.layout.debuffs">
+                  <mat-icon
+                    [style.color]="debuff.color"
+                    [style.background-color]="color.textColor(debuff.color)"
+                    *ngIf="appliesDebuff(debuff, dt)"
+                    class="rounded"
+                  >
+                    bookmark
+                  </mat-icon>
+                </ng-container>
+              </div>
             </mat-panel-description>
           </mat-expansion-panel-header>
 
           <mat-form-field>
-            <mat-label>Damage Type Identifier</mat-label>
-            <input matInput [(ngModel)]="dt.id" />
+            <mat-label>Damage Type Name</mat-label>
+            <input matInput [(ngModel)]="dt.name" />
           </mat-form-field>
 
           <br />
@@ -56,6 +69,37 @@
               <input matInput [(ngModel)]="dt.slowDuration" />
             </mat-form-field>
           </ng-container>
+          <br />
+
+          <!-- Debuffs applied -->
+          <button mat-button [matMenuTriggerFor]="menu">Applies Debuff</button>
+          <mat-menu #menu="matMenu">
+            <ng-container *ngFor="let debuff of json.layout.debuffs">
+              <button
+                [style.color]="color.textColor(debuff.color)"
+                [style.background-color]="debuff.color"
+                mat-menu-item
+                *ngIf="!appliesDebuff(debuff, dt)"
+                (click)="applyDebuff(debuff, dt)"
+              >
+                {{ debuff.name }}
+              </button>
+            </ng-container>
+          </mat-menu>
+
+          <mat-chip-list>
+            <ng-container *ngFor="let debuff of json.layout.debuffs">
+              <mat-chip
+                (click)="deleteDebuff(debuff, dt)"
+                [style.color]="color.textColor(debuff.color)"
+                [style.background-color]="debuff.color"
+                *ngIf="appliesDebuff(debuff, dt)"
+                >{{ debuff.name }}</mat-chip
+              >
+            </ng-container>
+          </mat-chip-list>
+          <!-- End Debuffs applied -->
+
           <mat-action-row>
             <button
               mat-mini-fab

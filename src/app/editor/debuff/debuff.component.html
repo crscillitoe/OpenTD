@@ -1,1 +1,81 @@
-<p>debuff works!</p>
+<div class="centered">
+  <div class="editor-view">
+    <mat-accordion class="spaced">
+      <ng-container *ngFor="let dt of json.layout.debuffs; let i = index">
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header [style.background-color]="dt.color">
+            <mat-panel-title>
+              <div class="table-text" [style.color]="color.textColor(dt.color)">
+                {{ dt.name }}
+              </div>
+            </mat-panel-title>
+            <mat-panel-description [style.color]="dt.color">
+              <mat-icon>bookmark</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-form-field class="spaced">
+            <mat-label>Debuff Name</mat-label>
+            <input matInput [(ngModel)]="dt.name" />
+          </mat-form-field>
+
+          <mat-form-field class="spaced">
+            <mat-label>Debuff Color</mat-label>
+            <input matInput [(ngModel)]="dt.color" />
+          </mat-form-field>
+          <br />
+
+          <!-- Debuffs applied -->
+          <button mat-button [matMenuTriggerFor]="menu">Weak Against</button>
+          <mat-menu #menu="matMenu">
+            <ng-container *ngFor="let debuff of json.layout.debuffs">
+              <button
+                [style.color]="color.textColor(debuff.color)"
+                [style.background-color]="debuff.color"
+                mat-menu-item
+                *ngIf="!weakAgainst(debuff, dt)"
+                (click)="applyWeakness(debuff, dt)"
+              >
+                {{ debuff.name }}
+              </button>
+            </ng-container>
+          </mat-menu>
+
+          <mat-chip-list>
+            <ng-container *ngFor="let debuff of json.layout.debuffs">
+              <mat-chip
+                (click)="removeWeakness(debuff, dt)"
+                [style.color]="color.textColor(debuff.color)"
+                [style.background-color]="debuff.color"
+                *ngIf="weakAgainst(debuff, dt)"
+                >{{ debuff.name }}</mat-chip
+              >
+            </ng-container>
+          </mat-chip-list>
+          <!-- End Debuffs applied -->
+          <mat-action-row>
+            <button
+              mat-mini-fab
+              matTooltip="Delete Debuff"
+              color="warn"
+              (click)="delete(i)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </ng-container>
+    </mat-accordion>
+
+    <div class="centered">
+      <button
+        mat-fab
+        color="primary"
+        matTooltip="Add Debuff"
+        (click)="addDebuff()"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

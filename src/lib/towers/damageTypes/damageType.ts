@@ -1,5 +1,8 @@
+import { DebuffID } from '../debuff';
+
 export interface DamageType {
   id: DamageTypeID;
+  name: string;
 
   /**
    * Indicates this type of damage can harm
@@ -35,6 +38,24 @@ export interface DamageType {
    * # of ticks for the slow.
    */
   slowDuration: number;
+
+  /**
+   * Array of debuffs that will be applied by this
+   * damage type.
+   */
+  appliesDebuffs: Array<DebuffID>;
+
+  /**
+   * Specifies what types of multipliers occur when this
+   * tower is attacking enemies with specific debuffs.
+   */
+  debuffDamages: Array<DebuffDamage>;
+}
+
+export interface DebuffDamage {
+  id: DebuffID;
+  flatIncrease: number;
+  multiplier: number;
 }
 
 export type DamageTypeID = string;
