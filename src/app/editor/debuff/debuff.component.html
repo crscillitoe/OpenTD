@@ -3,15 +3,18 @@
     <mat-accordion class="spaced">
       <ng-container *ngFor="let dt of json.layout.debuffs; let i = index">
         <mat-expansion-panel hideToggle>
-          <mat-expansion-panel-header [style.background-color]="dt.color">
+          <mat-expansion-panel-header>
             <mat-panel-title>
-              <div class="table-text" [style.color]="color.textColor(dt.color)">
+              <div class="table-text">
                 {{ dt.name }}
               </div>
             </mat-panel-title>
-            <mat-panel-description [style.color]="dt.color">
-              <mat-icon>bookmark</mat-icon>
-            </mat-panel-description>
+
+            <div class="right-align">
+              <mat-icon [style.color]="dt.color" class="rounded">
+                bookmark
+              </mat-icon>
+            </div>
           </mat-expansion-panel-header>
 
           <mat-form-field class="spaced">

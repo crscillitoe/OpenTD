@@ -28,7 +28,6 @@
                 <ng-container *ngFor="let debuff of json.layout.debuffs">
                   <mat-icon
                     [style.color]="debuff.color"
-                    [style.background-color]="color.textColor(debuff.color)"
                     *ngIf="appliesDebuff(debuff, dt)"
                     class="rounded"
                   >

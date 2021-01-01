@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 html {
-  background-color: #424242;
+  background-color: #303030;
 }
 html,
 body {
@@ -32,6 +32,10 @@ body {
 
 mat-panel-description {
   justify-content: space-between;
+}
+
+.mat-tab-labels {
+  background-color: #424242;
 }
 
 .centered,
