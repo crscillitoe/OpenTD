@@ -13,6 +13,7 @@ export interface Tower {
    * Name displayed to the player
    */
   name: string;
+  description: string;
   cost: number;
   width: number;
   height: number;

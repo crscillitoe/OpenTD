@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ColorService } from 'src/app/services/color.service';
 import { ConfirmationService } from 'src/app/services/editor/confirmation.service';
 import { JsonService } from 'src/app/services/editor/json.service';
+import { Guid } from 'src/lib/guid';
+import { Tower } from 'src/lib/towers/tower';
 
 @Component({
   selector: 'app-tower',
@@ -16,4 +18,36 @@ export class TowerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
+  delete(index: number) {
+    this.confirmer.confirm(
+      'Are you sure you want to delete this Tower?',
+      () => {
+        this.json.layout.towers.splice(index, 1);
+      }
+    );
+  }
+
+  addTower(): void {
+    const temp: Tower = {
+      id: Guid.generate(),
+      name: 'Tower Name',
+      description: 'Tower Description',
+      cost: 0,
+      width: 1,
+      height: 1,
+      validTiles: [], // TODO
+      availableUpgrades: [],
+      appliedUpgrades: [], // Always blank in editor
+      attackSpeed: 0,
+      attackDistance: 0,
+      canShootOverWalls: false,
+      damage: 0,
+      armorPenetration: 0,
+      damageType: '',
+      buffs: [],
+    };
+
+    this.json.layout.towers.push(temp);
+  }
 }

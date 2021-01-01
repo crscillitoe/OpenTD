@@ -1,1 +1,52 @@
-<p>tower works!</p>
+<div class="centered">
+  <div class="editor-view">
+    <mat-accordion class="spaced">
+      <ng-container *ngFor="let dt of json.layout.towers; let i = index">
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="table-text">
+                {{ dt.name }}
+              </div>
+            </mat-panel-title>
+            <mat-panel-description>
+              {{ dt.description }}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-form-field class="spaced">
+            <mat-label>Tower Name</mat-label>
+            <input matInput [(ngModel)]="dt.name" />
+          </mat-form-field>
+
+          <mat-form-field class="spaced">
+            <mat-label>Tower Description</mat-label>
+            <input matInput [(ngModel)]="dt.description" />
+          </mat-form-field>
+
+          <mat-action-row>
+            <button
+              mat-mini-fab
+              matTooltip="Delete Tower"
+              color="warn"
+              (click)="delete(i)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </ng-container>
+    </mat-accordion>
+
+    <div class="centered">
+      <button
+        mat-fab
+        color="primary"
+        matTooltip="Add Tower"
+        (click)="addTower()"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
