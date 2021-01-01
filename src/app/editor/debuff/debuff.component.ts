@@ -15,7 +15,7 @@ export class DebuffComponent implements OnInit {
   constructor(
     public color: ColorService,
     public json: JsonService,
-    public confirmer: ConfirmationService
+    private confirmer: ConfirmationService
   ) {}
 
   ngOnInit(): void {}
