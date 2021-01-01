@@ -10,7 +10,25 @@
               </div>
             </mat-panel-title>
             <mat-panel-description>
-              {{ dt.description }}
+              <div class="horizontal-flex">
+                {{ dt.description | slice: 0:25 }}
+                <ng-container *ngIf="dt.description.length > 25">
+                  ...
+                </ng-container>
+              </div>
+
+              <div class="right-align">
+                <ng-container *ngFor="let debuff of json.layout.debuffs">
+                  <mat-icon
+                    [style.color]="debuff.color"
+                    [style.background-color]="color.textColor(debuff.color)"
+                    *ngIf="appliesDebuff(debuff, dt)"
+                    class="rounded"
+                  >
+                    bookmark
+                  </mat-icon>
+                </ng-container>
+              </div>
             </mat-panel-description>
           </mat-expansion-panel-header>
 
@@ -19,9 +37,62 @@
             <input matInput [(ngModel)]="dt.name" />
           </mat-form-field>
 
-          <mat-form-field class="spaced">
+          <mat-form-field style="width: 90%" class="spaced">
             <mat-label>Tower Description</mat-label>
-            <input matInput [(ngModel)]="dt.description" />
+            <textarea matInput [(ngModel)]="dt.description"></textarea>
+          </mat-form-field>
+
+          <br />
+
+          <mat-form-field class="spaced thin">
+            <mat-label>Tower Cost</mat-label>
+            <input matInput [(ngModel)]="dt.cost" />
+          </mat-form-field>
+
+          <mat-form-field class="spaced thin">
+            <mat-label>Tower Width</mat-label>
+            <input matInput [(ngModel)]="dt.width" />
+          </mat-form-field>
+
+          <mat-form-field class="spaced thin">
+            <mat-label>Tower Height</mat-label>
+            <input matInput [(ngModel)]="dt.height" />
+          </mat-form-field>
+
+          <br />
+
+          <mat-slide-toggle class="spaced" [(ngModel)]="dt.canShootOverWalls"
+            >Shoots Over Walls</mat-slide-toggle
+          >
+          <mat-form-field class="spaced thin">
+            <mat-label>Attack Speed</mat-label>
+            <input matInput [(ngModel)]="dt.attackSpeed" />
+          </mat-form-field>
+
+          <mat-form-field class="spaced thin">
+            <mat-label>Tower Range</mat-label>
+            <input matInput [(ngModel)]="dt.attackDistance" />
+          </mat-form-field>
+
+          <br />
+          <mat-form-field class="spaced thin">
+            <mat-label>Damage</mat-label>
+            <input matInput [(ngModel)]="dt.damage" />
+          </mat-form-field>
+
+          <mat-form-field class="spaced thin">
+            <mat-label>Armor Pen</mat-label>
+            <input matInput [(ngModel)]="dt.armorPenetration" />
+          </mat-form-field>
+
+          <mat-form-field class="spaced">
+            <mat-label>Damage Type</mat-label>
+            <mat-select [(ngModel)]="dt.damageType">
+              <mat-option value="">Single Target</mat-option>
+              <ng-container *ngFor="let d of json.layout.damageTypes">
+                <mat-option [value]="d.id">{{ d.name }}</mat-option>
+              </ng-container>
+            </mat-select>
           </mat-form-field>
 
           <mat-action-row>

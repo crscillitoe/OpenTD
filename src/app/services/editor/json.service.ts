@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Editor } from 'src/lib/editor';
+import { DamageTypeID } from 'src/lib/towers/damageTypes/damageType';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,15 @@ export class JsonService {
   layout: Editor;
   constructor() {
     this.layout = this.loadLayout();
+  }
+
+  getDamageTypeByID(id: DamageTypeID) {
+    for (let x = 0; x < this.layout.damageTypes.length; x++) {
+      const dt = this.layout.damageTypes[x];
+      if (dt.id === id) return dt;
+    }
+
+    return null;
   }
 
   saveChanges() {
@@ -25,6 +35,8 @@ export class JsonService {
       levels: [],
       damageTypes: [],
       debuffs: [],
+      buffs: [],
+      towerUpgrades: [],
     };
     return e;
   }

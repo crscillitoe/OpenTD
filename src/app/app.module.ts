@@ -28,6 +28,7 @@ import { DialogComponent } from './editor/dialog/dialog.component';
 import { DebuffComponent } from './editor/debuff/debuff.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { MatMenuModule } from '@angular/material/menu';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatChipsModule,
+    TextFieldModule,
     MatMenuModule,
     MatFormFieldModule,
     MatToolbarModule,

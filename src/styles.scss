@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+  background-color: #424242;
+}
 html,
 body {
   margin: 0px;
@@ -27,6 +30,10 @@ body {
   width: 100%;
 }
 
+mat-panel-description {
+  justify-content: space-between;
+}
+
 .centered,
 .horizontal-flex {
   display: flex;
@@ -51,4 +58,8 @@ body {
 
 .rounded {
   border-radius: 5px;
+}
+
+.thin {
+  width: 6em;
 }

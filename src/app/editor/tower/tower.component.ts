@@ -3,6 +3,7 @@ import { ColorService } from 'src/app/services/color.service';
 import { ConfirmationService } from 'src/app/services/editor/confirmation.service';
 import { JsonService } from 'src/app/services/editor/json.service';
 import { Guid } from 'src/lib/guid';
+import { Debuff } from 'src/lib/towers/debuff';
 import { Tower } from 'src/lib/towers/tower';
 
 @Component({
@@ -26,6 +27,17 @@ export class TowerComponent implements OnInit {
         this.json.layout.towers.splice(index, 1);
       }
     );
+  }
+
+  appliesDebuff(debuff: Debuff, t: Tower): boolean {
+    if (t.damageType === '') return false;
+
+    const dt = this.json.getDamageTypeByID(t.damageType);
+    if (dt) {
+      return dt.appliesDebuffs.indexOf(debuff.id) > -1;
+    }
+
+    return false;
   }
 
   addTower(): void {

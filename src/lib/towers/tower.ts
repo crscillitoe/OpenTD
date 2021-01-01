@@ -28,7 +28,7 @@ export interface Tower {
    * Contains a list of available upgrades for this
    * tower.
    */
-  availableUpgrades: Array<TowerUpgrade>;
+  availableUpgrades: Array<TowerUpgradeID>;
 
   /**
    * List of applied tower upgrade names.
